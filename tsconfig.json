@@ -1,13 +1,40 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
   "compilerOptions": {
+    // 基础配置
+    "target": "ES2022", // 编译目标语法版本
+    "lib": ["DOM", "DOM.Iterable", "ES2022"], // 明确包含浏览器环境支持
+    "module": "ESNext", // 与 Vite 的 ESM 开发模式匹配
+    "moduleResolution": "bundler", // TypeScript 5.0+ 推荐，支持现代解析逻辑
+    "types": ["vite/client"], // 引入 Vite 环境类型（如 import.meta.env）
+
+    // JSX 支持
+    "jsx": "react-jsx", // React 17+ 自动导入 jsx 运行时（无需手动引入）
+    "jsxImportSource": "react", // 明确 JSX 的依赖库
+
+    // 路径别名（需与 Vite 配置同步）
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
+      "@/*": ["./src/*"] // 示例路径别名
+    },
+
+    // 严格类型检查
+    "strict": true, // 启用所有严格模式选项
+    "skipLibCheck": true, // 跳过第三方库类型检查（提升编译速度）
+    "esModuleInterop": true, // 兼容 CommonJS/ESM 模块混用
+    "forceConsistentCasingInFileNames": true, // 强制文件名大小写一致
+
+    // 开发优化
+    "noEmit": true, // Vite 使用 esbuild 编译，无需生成输出
+    "isolatedModules": true, // 确保每个文件独立编译（兼容性保障）
+    "allowSyntheticDefaultImports": true, // 允许从无默认导出的模块中默认导入
+
+    // 其他规则
+    "noUnusedLocals": true, // 报告未使用的局部变量
+    "noUnusedParameters": true, // 报告未使用的函数参数
+    "noFallthroughCasesInSwitch": true // 防止 switch 语句贯穿
+  },
+  // 包含的文件范围
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts"],
+  // 排除的范围
+  "exclude": ["node_modules", "dist"]
 }
