@@ -4,7 +4,7 @@
     "target": "ES2022", // 编译目标语法版本
     "lib": ["DOM", "DOM.Iterable", "ES2022"], // 明确包含浏览器环境支持
     "module": "ESNext", // 与 Vite 的 ESM 开发模式匹配
-    "moduleResolution": "bundler", // TypeScript 5.0+ 推荐，支持现代解析逻辑
+    "moduleResolution": "node", // TypeScript 5.0+ 推荐，支持现代解析逻辑
     "types": ["vite/client"], // 引入 Vite 环境类型（如 import.meta.env）
 
     // JSX 支持
