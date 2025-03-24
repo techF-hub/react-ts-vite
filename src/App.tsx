@@ -1,15 +1,10 @@
-import { useState } from "react";
-import Comp1 from "@/components/comp1";
-import Comp2 from "@/components/comp2";
+import { useRoutes } from "react-router-dom";
+import routes from "./router";
 
 function App() {
-  return (
-    <>
-      <div>顶级组件</div>
-      <Comp1></Comp1>
-      <Comp2></Comp2>
-    </>
-  );
+  // hook模式
+  const outlet = useRoutes(routes);
+  return <div className="App">{outlet}</div>;
 }
 
 export default App;
